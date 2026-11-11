@@ -52,58 +52,33 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .92 0 0 0 0 .86 0 0 0 .9 -.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* ───────────────────────── ENVELOPE INTRO ───────────────────────── */
-.intro{position:fixed;inset:0;z-index:100;overflow:hidden;
-  background:radial-gradient(120% 80% at 50% 40%, var(--wine-700), var(--wine-950));
-  transform-origin:50% 40%}
+.intro{position:fixed;inset:0;z-index:100;overflow:hidden;background:transparent}
 .env-wrap{position:absolute;left:50%;top:50%;
   width:max(100vw, 66.64vh);height:max(100vh, 150.06vw);
   width:max(100vw, 66.64svh);height:max(100svh, 150.06vw);
   transform:translate(-50%,-50%)}
-@media (min-aspect-ratio: 3/4){
-  .env-wrap{top:45%;height:80vh;height:80svh;width:calc(80vh * .6664);width:calc(80svh * .6664)}
-  .env-stage{box-shadow:0 40px 80px -20px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04)}
-}
-.env-stage{position:absolute;inset:0;perspective:1900px;perspective-origin:50% 0;
+@media (min-aspect-ratio: 3/4){.env-wrap{top:calc(50% - 13vw)}.seal{width:30vh}.seal-ring{width:25vh}}
+.env-stage{position:absolute;inset:0;
   --flap: polygon(0 0, 0% 58.25%, 4.69% 62.38%, 9.38% 66.5%, 14.07% 70.62%, 18.76% 74.75%, 23.45% 78.88%, 28.14% 83%, 32.83% 87.12%, 37.51% 91.25%, 43.03% 95.98%, 44.45% 96.89%, 45.88% 97.58%, 47.32% 98.06%, 48.77% 98.32%, 50.23% 98.37%, 51.7% 98.2%, 53.18% 97.81%, 54.67% 97.21%, 56.17% 96.4%, 57.68% 95.36%, 59.2% 94.12%, 63.89% 89.94%, 68.58% 85.76%, 73.27% 81.58%, 77.96% 77.4%, 82.65% 73.22%, 87.34% 69.04%, 92.03% 64.86%, 96.72% 60.68%, 100% 57.75%, 100% 0);
   --flap-m: polygon(0 100%, 0% 41.75%, 4.69% 37.62%, 9.38% 33.5%, 14.07% 29.38%, 18.76% 25.25%, 23.45% 21.12%, 28.14% 17%, 32.83% 12.88%, 37.51% 8.75%, 43.03% 4.02%, 44.45% 3.11%, 45.88% 2.42%, 47.32% 1.94%, 48.77% 1.68%, 50.23% 1.63%, 51.7% 1.8%, 53.18% 2.19%, 54.67% 2.79%, 56.17% 3.6%, 57.68% 4.64%, 59.2% 5.88%, 63.89% 10.06%, 68.58% 14.24%, 73.27% 18.42%, 77.96% 22.6%, 82.65% 26.78%, 87.34% 30.96%, 92.03% 35.14%, 96.72% 39.32%, 100% 42.25%, 100% 100%);
   --pocket: polygon(0% 36.25%, 4.69% 38.83%, 9.38% 41.41%, 14.07% 43.98%, 18.76% 46.56%, 23.45% 49.14%, 28.14% 51.72%, 32.83% 54.3%, 37.51% 56.88%, 43.03% 59.83%, 44.45% 60.4%, 45.88% 60.83%, 47.32% 61.13%, 48.77% 61.3%, 50.23% 61.32%, 51.7% 61.22%, 53.18% 60.98%, 54.67% 60.6%, 56.17% 60.09%, 57.68% 59.45%, 59.2% 58.67%, 63.89% 56.05%, 68.58% 53.44%, 73.27% 50.83%, 77.96% 48.22%, 82.65% 45.6%, 87.34% 42.99%, 92.03% 40.38%, 96.72% 37.77%, 100% 35.94%, 100% 100%, 0 100%);
   --liner: #4a1222 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cg fill='none' stroke='%23c99a83' stroke-width='.7' stroke-opacity='.5'%3E%3Cpath d='M14 8.5l3 5.5-3 5.5-3-5.5z'/%3E%3Cpath d='M0 0l2.4 0M0 0l0 2.4M28 28l-2.4 0M28 28l0-2.4M28 0l-2.4 0M28 0l0 2.4M0 28l2.4 0M0 28l0-2.4'/%3E%3C/g%3E%3Ccircle cx='14' cy='14' r='.9' fill='%23c99a83' fill-opacity='.6'/%3E%3C/svg%3E");
 }
-.env-inside{position:absolute;inset:0;background:var(--liner);background-size:22px 22px;z-index:1}
-.env-inside::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.05) 40%, rgba(0,0,0,.35))}
 
-.env-letter{position:absolute;left:9%;width:82%;top:26%;height:70%;z-index:3;
-  container-type:inline-size;
-  background:var(--ivory) url(assets/paper.webp) 0 0/120% auto;
-  box-shadow:0 -1px 0 rgba(255,255,255,.6) inset, 0 10px 30px rgba(20,0,6,.35);
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  padding-top:9cqw;color:var(--ink)}
-.env-letter .l-eyebrow{font:500 2.6cqw/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft)}
-.env-letter .l-names{font:15cqw/1.05 var(--script);margin:4cqw 0 1cqw;color:var(--wine-500)}
-.env-letter .l-names i{font:italic 300 8cqw var(--serif);margin:0 2cqw;color:var(--ink-soft)}
-.env-letter .l-rule{width:22cqw;height:1px;background:linear-gradient(90deg,transparent,var(--rose),transparent);margin:3cqw 0}
-.env-letter .l-date{font:400 6cqw/1 var(--serif);letter-spacing:.18em;color:var(--ink)}
-
-.env-pocket-wrap{position:absolute;inset:0;z-index:4;pointer-events:none;filter:drop-shadow(0 -4px 6px rgba(40,8,14,.22))}
+.env-pocket-wrap{position:absolute;inset:0;z-index:4;pointer-events:none;will-change:transform}
 .env-pocket{position:absolute;inset:0;background:url(assets/envelope.webp) 0 0/100% 100% no-repeat;clip-path:var(--pocket);-webkit-clip-path:var(--pocket)}
 
-.env-flap{position:absolute;left:0;top:0;width:100%;height:62.5%;z-index:5;transform-origin:50% 0;transform-style:preserve-3d;pointer-events:none}
-.flap-face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.env-flap{position:absolute;left:0;top:0;width:100%;height:62.5%;z-index:5;pointer-events:none;will-change:transform}
+.flap-face{position:absolute;inset:0}
 .flap-front{background:url(assets/envelope.webp) 0 0/100% 160% no-repeat;clip-path:var(--flap);-webkit-clip-path:var(--flap)}
-.flap-shade{position:absolute;inset:0;background:linear-gradient(0deg, rgba(60,25,20,.35), rgba(60,25,20,.05));opacity:0}
-.flap-back{transform:rotateX(180deg);background:#e9e1d6 url(assets/paper.webp) 0 0/120% auto;clip-path:var(--flap-m);-webkit-clip-path:var(--flap-m)}
-.flap-back::after{content:"";position:absolute;inset:0;background:var(--liner);background-size:22px 22px;clip-path:var(--flap-m);-webkit-clip-path:var(--flap-m);transform:scale(.9);transform-origin:50% 100%}
 
-.seal{position:absolute;left:50.9%;top:58.6%;width:min(38%, 54vw);aspect-ratio:646/660;z-index:6;
+.seal{position:absolute;left:50.9%;top:93.76%;width:min(38%, 54vw, 40vh);pointer-events:auto;aspect-ratio:646/660;z-index:6;
   transform:translate(-50%,-50%);border:0;padding:0;background:none;cursor:pointer;
   filter:drop-shadow(0 9px 9px rgba(70,30,22,.32)) drop-shadow(0 2px 2px rgba(70,30,22,.3));
   -webkit-tap-highlight-color:transparent}
 .seal img{position:absolute;inset:0;width:100%;height:100%}
-.seal .half{visibility:hidden}
-.seal .h-l{clip-path:polygon(0 0, 53% 0, 47% 17%, 55% 32%, 45.5% 49%, 54% 65%, 46.5% 82%, 51% 100%, 0 100%)}
-.seal .h-r{clip-path:polygon(53% 0, 100% 0, 100% 100%, 51% 100%, 46.5% 82%, 54% 65%, 45.5% 49%, 55% 32%, 47% 17%)}
 .seal .whole{animation:breathe 3.2s ease-in-out infinite}
-.seal-ring{position:absolute;left:50.9%;top:58.6%;width:min(32%, 46vw);aspect-ratio:1;z-index:6;margin:0;transform:translate(-50%,-50%);pointer-events:none}
+.seal-ring{position:absolute;left:50.9%;top:93.76%;width:min(32%, 46vw, 34vh);aspect-ratio:1;z-index:6;margin:0;transform:translate(-50%,-50%);pointer-events:none}
 .seal-ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(160,105,85,.55);animation:ripple 3.2s ease-out infinite}
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
 @keyframes ripple{0%{transform:scale(1);opacity:0}25%{opacity:.9}100%{transform:scale(1.55);opacity:0}}
@@ -112,7 +87,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));transition:opacity .5s}
 .intro-hint b{display:block;font:400 clamp(30px,8.4vw,44px)/1.1 var(--script);color:var(--wine-500)}
 .intro-hint span{display:inline-block;margin-top:8px;font:500 10.5px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--ink-soft)}
-@media (min-aspect-ratio: 3/4){.intro-hint{color:var(--champagne);bottom:2.5vh}.intro-hint b{color:var(--champagne);font-size:34px}.intro-hint span{color:var(--rose)}}
 .intro.opening .intro-hint{opacity:0}
 .intro.opening .seal{cursor:default}
 .intro.opening .seal .whole{animation:none}
@@ -361,24 +335,14 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
 <div class="intro" id="intro" role="dialog" aria-label="Запрошення в конверті">
   <div class="env-wrap">
     <div class="env-stage" id="stage">
-      <div class="env-inside"></div>
-      <div class="env-letter" id="letter" aria-hidden="true">
-        <div class="l-eyebrow">Запрошення на весілля</div>
-        <div class="l-names" data-names-letter>Анна<i>і</i>Євгеній</div>
-        <div class="l-rule"></div>
-        <div class="l-date" data-date-dots>19.06.2027</div>
-      </div>
-      <div class="env-pocket-wrap"><div class="env-pocket"></div></div>
+      <div class="env-pocket-wrap" id="pocket"><div class="env-pocket"></div></div>
       <div class="env-flap" id="flap">
-        <div class="flap-face flap-front"><div class="flap-shade" id="flapShade"></div></div>
-        <div class="flap-face flap-back"></div>
+        <div class="flap-face flap-front"></div>
+        <div class="seal-ring" aria-hidden="true"></div>
+        <button class="seal" id="seal" type="button" aria-label="Відкрити запрошення">
+          <img class="whole" src="assets/seal.webp" alt="" draggable="false">
+        </button>
       </div>
-      <div class="seal-ring" aria-hidden="true"></div>
-      <button class="seal" id="seal" type="button" aria-label="Відкрити запрошення">
-        <img class="whole" src="assets/seal.webp" alt="" draggable="false">
-        <img class="half h-l" src="assets/seal.webp" alt="" draggable="false">
-        <img class="half h-r" src="assets/seal.webp" alt="" draggable="false">
-      </button>
     </div>
   </div>
   <div class="intro-hint"><b>Для вас є лист</b><span>торкніться печатки</span></div>
@@ -628,9 +592,7 @@ document.title = both;
 $('[data-bride]').textContent = C.bride;
 $('[data-groom]').textContent = C.groom;
 $('.names').setAttribute('aria-label', both);
-$('[data-names-letter]').innerHTML = `${esc(C.bride)}<i>і</i>${esc(C.groom)}`;
 $$('[data-names-plain]').forEach(e => e.textContent = both);
-$('[data-date-dots]').textContent = `${pad(D)}.${pad(M)}.${Y}`;
 $('[data-hero-date]').innerHTML = `<span>${pad(D)}</span><i></i><span>${pad(M)}</span><i></i><span>${Y}</span>`;
 $('[data-hero-day]').textContent = `${WD[wd]} · ${C.city}`;
 $('[data-date-long]').textContent = `${WD[wd]}, ${D} ${MONTHS_GEN[M - 1]} ${Y} року`;
@@ -906,46 +868,36 @@ if (C.music) {
 }
 
 /* ───── envelope opening ───── */
-const intro = $('#intro'), seal = $('#seal'), stage = $('#stage'), flap = $('#flap'), letter = $('#letter'), site = $('#site');
+const intro = $('#intro'), seal = $('#seal'), stage = $('#stage'), flap = $('#flap'), pocket = $('#pocket'), site = $('#site');
 let opened = false;
 function revealSite() {
-  document.documentElement.classList.remove('locked');
   scrollTo(0, 0);
   site.classList.add('enter');
   armReveal(); layoutTimeline();
+}
+function finish() {
+  document.documentElement.classList.remove('locked');
+  intro.remove();
+  layoutTimeline();
 }
 async function openEnvelope() {
   if (opened) return; opened = true;
   intro.classList.add('opening');
   if (audio) { audio.play().then(() => $('#music').classList.add('on')).catch(() => {}); }
-  if (reduce) { intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: 'forwards' }); revealSite(); await wait(420); intro.remove(); return; }
-  const F = 'forwards';
-  // 1 — the seal cracks
-  seal.animate([{ transform: 'translate(-50%,-50%) scale(1)' }, { transform: 'translate(-50%,-50%) scale(.95) rotate(-1.5deg)' }, { transform: 'translate(-50%,-50%) scale(1.02)' }], { duration: 260, easing: 'ease-out' });
-  await wait(230);
-  $('.whole', seal).style.visibility = 'hidden';
-  $$('.half', seal).forEach(h => h.style.visibility = 'visible');
-  $('.h-l', seal).animate([{ transform: 'none', opacity: 1 }, { transform: 'translate(-6%,2%) rotate(-5deg)', opacity: 1, offset: .25 }, { transform: 'translate(-34%,150%) rotate(-32deg)', opacity: 0 }], { duration: 1150, easing: 'cubic-bezier(.45,0,.8,.4)', fill: F });
-  $('.h-r', seal).animate([{ transform: 'none', opacity: 1 }, { transform: 'translate(6%,1%) rotate(5deg)', opacity: 1, offset: .25 }, { transform: 'translate(30%,165%) rotate(26deg)', opacity: 0 }], { duration: 1250, easing: 'cubic-bezier(.45,0,.8,.4)', fill: F });
-  await wait(480);
-  // 2 — step back a little so the opening flap stays in frame
-  const wide = matchMedia('(min-aspect-ratio: 3/4)').matches;
-  stage.animate([{ transform: 'none' }, { transform: wide ? 'translateY(18%) scale(.72)' : 'translateY(16%) scale(.74)' }], { duration: 1500, easing: 'cubic-bezier(.65,0,.35,1)', fill: F });
-  await wait(300);
-  // 3 — flap opens toward the viewer
-  flap.animate([{ transform: 'rotateX(0deg)' }, { transform: 'rotateX(180deg)' }], { duration: 1400, easing: 'cubic-bezier(.55,.06,.32,1)', fill: F });
-  $('#flapShade').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 700, easing: 'ease-in', fill: F });
-  setTimeout(() => { flap.style.zIndex = 2; }, 650);
-  await wait(1250);
-  // 4 — the letter slides out
-  letter.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-46%)' }], { duration: 1400, easing: 'cubic-bezier(.3,.7,.2,1)', fill: F });
-  await wait(1700);
-  // 5 — move into the letter, the site appears
   revealSite();
-  const lr = letter.getBoundingClientRect();
-  intro.style.transformOrigin = `${lr.left + lr.width / 2}px ${lr.top + lr.height * .3}px`;
-  const a = intro.animate([{ opacity: 1, transform: 'scale(1)' }, { opacity: 1, transform: 'scale(1.25)', offset: .35 }, { opacity: 0, transform: 'scale(1.9)' }], { duration: 1300, easing: 'cubic-bezier(.55,0,.35,1)', fill: F });
-  a.onfinish = () => intro.remove();
+  if (reduce) { const a = intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: 'forwards' }); a.onfinish = finish; return; }
+  const F = 'forwards';
+  // the seal is pressed
+  seal.animate([{ transform: 'translate(-50%,-50%) scale(1)' }, { transform: 'translate(-50%,-50%) scale(.94)' }, { transform: 'translate(-50%,-50%) scale(1)' }], { duration: 260, easing: 'ease-out' });
+  await wait(220);
+  // the top half (with the seal) slides up, the bottom half slides down; the camera stays still
+  const vh = innerHeight, st = stage.getBoundingClientRect(), sr = seal.getBoundingClientRect();
+  const up = Math.max(sr.bottom, st.top + st.height * .625) + 40;
+  const down = vh - (st.top + st.height * .3594) + 40;
+  const ease = 'cubic-bezier(.7,0,.22,1)';
+  flap.animate([{ transform: 'translateY(0)' }, { transform: `translateY(${-up}px)` }], { duration: 1600, easing: ease, fill: F });
+  const b = pocket.animate([{ transform: 'translateY(0)' }, { transform: `translateY(${down}px)` }], { duration: 1600, easing: ease, fill: F, delay: 60 });
+  b.onfinish = finish;
 }
 seal.addEventListener('click', openEnvelope);
 
