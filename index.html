@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Євгеній і Анна</title>
+<title>Весілля Євгена та Анни</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Запрошення на весілля Євгенія та Анни">
+<meta name="description" content="Запрошення на весілля Євгена та Анни">
 <meta name="theme-color" content="#f7eee8">
-<meta property="og:title" content="Євгеній і Анна · Запрошення на весілля">
+<meta property="og:title" content="Запрошення на весілля Євгена та Анни">
 <meta property="og:description" content="Ми будемо щасливі розділити з вами наш особливий день">
 <meta property="og:image" content="assets/couple.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -429,10 +429,10 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
     <div class="hero-top">
     <img class="hero-seal" src="assets/seal.webp" alt="" data-in style="--d:.2s">
     <p class="eyebrow" data-in style="--d:.35s">Запрошення на весілля</p>
-    <h1 class="names" aria-label="Євгеній і Анна">
-      <span class="nm n1" style="--d:.5s" data-groom>Євгеній</span>
-      <span class="amp">і</span>
-      <span class="nm n2" style="--d:1.5s" data-bride>Анна</span>
+    <h1 class="names" aria-label="Євгена та Анни">
+      <span class="nm n1" style="--d:.5s" data-groom>Євгена</span>
+      <span class="amp">та</span>
+      <span class="nm n2" style="--d:1.5s" data-bride>Анни</span>
     </h1>
     <p class="hero-date" data-in style="--d:2.4s" data-hero-date><span>19</span><i></i><span>06</span><i></i><span>2027</span></p>
     <p class="hero-day" data-in style="--d:2.6s" data-hero-day>субота · Київ</p>
@@ -451,7 +451,7 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
         <p class="lead">Є дні, які хочеться прожити поруч із найближчими людьми. Для нас настає саме такий день.</p>
         <p class="lead">Ми з радістю запрошуємо вас розділити з нами мить, коли дві історії стануть однією. Без вас це свято було б неповним.</p>
         <svg class="ornament" style="color:var(--rose)"><use href="#sprig"/></svg>
-        <div class="sign">З любов’ю,<b data-names-plain>Євгеній і Анна</b></div>
+        <div class="sign">З любов’ю,<b data-names-plain>Євген та Анна</b></div>
       </article>
     </div>
   </section>
@@ -600,7 +600,7 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
       <h2 class="h-script rv">До скорої зустрічі!</h2>
       <p class="lead rv muted" style="--d:.1s">Ми з нетерпінням чекаємо на вас</p>
       <img class="rv" style="--d:.2s" src="assets/seal.webp" alt="">
-      <p class="sig rv" style="--d:.3s" data-sig>Євгеній і Анна · 19.06.2027</p>
+      <p class="sig rv" style="--d:.3s" data-sig>Євген та Анна · 19.06.2027</p>
     </div>
   </section>
 </main>
@@ -613,7 +613,9 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
    ════════════════════════════════════════════════════════════════ */
 const CONFIG = {
   bride: 'Анна',
-  groom: 'Євгеній',
+  groom: 'Євген',
+  groomGen: 'Євгена',   // родовий відмінок: «весілля Євгена та Анни»
+  brideGen: 'Анни',
   // Дата й час початку (київський час, влітку +03:00, взимку +02:00)
   date: '2027-06-19T15:30:00+03:00',
   city: 'Київ',
@@ -682,11 +684,12 @@ if (qs.has('pick') || qs.has('c')) {
 }
 const [Y, M, D] = C.date.slice(0, 10).split('-').map(Number);
 const wd = new Date(Date.UTC(Y, M - 1, D)).getUTCDay();
-const both = `${C.groom} і ${C.bride}`;
-document.title = both;
-$('[data-bride]').textContent = C.bride;
-$('[data-groom]').textContent = C.groom;
-$('.names').setAttribute('aria-label', both);
+const both = `${C.groom} та ${C.bride}`;
+const bothGen = `${C.groomGen} та ${C.brideGen}`;
+document.title = 'Весілля ' + bothGen;
+$('[data-bride]').textContent = C.brideGen;
+$('[data-groom]').textContent = C.groomGen;
+$('.names').setAttribute('aria-label', bothGen);
 $$('[data-names-plain]').forEach(e => e.textContent = both);
 $('[data-hero-date]').innerHTML = `<span>${pad(D)}</span><i></i><span>${pad(M)}</span><i></i><span>${Y}</span>`;
 $('[data-hero-day]').textContent = `${WD[wd]} · ${C.city}`;
@@ -701,7 +704,7 @@ $('#mapBtn').href = C.venue.mapUrl || 'https://www.google.com/maps/search/?api=1
 const start = new Date(C.date), end = new Date(start.getTime() + 8 * 3600e3);
 const gfmt = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
 $('#gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-  + '&text=' + encodeURIComponent('Весілля: ' + both)
+  + '&text=' + encodeURIComponent('Весілля ' + bothGen)
   + '&dates=' + gfmt(start) + '/' + gfmt(end)
   + '&location=' + encodeURIComponent(C.venue.name + ', ' + C.venue.address)
   + '&details=' + encodeURIComponent('Ми чекаємо на вас!');
