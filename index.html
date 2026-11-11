@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Анна і Євгеній</title>
+<title>Євгеній і Анна</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Запрошення на весілля Анни та Євгенія">
+<meta name="description" content="Запрошення на весілля Євгенія та Анни">
 <meta name="theme-color" content="#f7eee8">
-<meta property="og:title" content="Анна і Євгеній · Запрошення на весілля">
+<meta property="og:title" content="Євгеній і Анна · Запрошення на весілля">
 <meta property="og:description" content="Ми будемо щасливі розділити з вами наш особливий день">
 <meta property="og:image" content="assets/couple.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap">
 <link rel="preload" as="image" href="assets/envelope.webp">
 <link rel="preload" as="image" href="assets/seal.webp">
 <link rel="preload" as="image" href="assets/couple.webp">
@@ -35,8 +35,8 @@
   --cd:#2c0910; --cm:#7a1f33; --cl:#a8344b;            /* candles */
   --silk-d:30,5,13; --silk-m:132,30,52; --silk-h:255,196,190;  /* satin ribbons */
 
-  --script:'Great Vibes', 'Marck Script', cursive;
-  --serif:'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --script:'Noto Serif Display', Georgia, serif;
+  --serif:'Noto Serif Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --sans:'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 
   --col: 640px;
@@ -183,6 +183,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .hero-ph .hero-date{margin-top:12px}
 .hero-ph .scroll-cue{margin-top:28px}
 .hero-ph .eyebrow{text-shadow:0 1px 10px rgba(0,0,0,.6)}
+
+
+/* typography: Noto Serif Display throughout, light italic for names and headings */
+.names .nm{font-style:italic !important;font-weight:200 !important;font-size:clamp(66px,18vw,130px) !important;letter-spacing:-.01em}
+.h-script,.tl-item h3,.note h3,.cal-head b,.sign b,.contact .nm,.intro-hint b{font-style:italic !important;font-weight:300 !important}
+.h-script{font-size:clamp(40px,11vw,72px) !important}
+.sign b{font-size:34px !important}
 
 /* satin ribbons */
 .silk{display:block;width:100%;height:170px;pointer-events:none}
@@ -422,10 +429,10 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
     <div class="hero-top">
     <img class="hero-seal" src="assets/seal.webp" alt="" data-in style="--d:.2s">
     <p class="eyebrow" data-in style="--d:.35s">Запрошення на весілля</p>
-    <h1 class="names" aria-label="Анна і Євгеній">
-      <span class="nm n1" style="--d:.5s" data-bride>Анна</span>
+    <h1 class="names" aria-label="Євгеній і Анна">
+      <span class="nm n1" style="--d:.5s" data-groom>Євгеній</span>
       <span class="amp">і</span>
-      <span class="nm n2" style="--d:1.5s" data-groom>Євгеній</span>
+      <span class="nm n2" style="--d:1.5s" data-bride>Анна</span>
     </h1>
     <p class="hero-date" data-in style="--d:2.4s" data-hero-date><span>19</span><i></i><span>06</span><i></i><span>2027</span></p>
     <p class="hero-day" data-in style="--d:2.6s" data-hero-day>субота · Київ</p>
@@ -444,7 +451,7 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
         <p class="lead">Є дні, які хочеться прожити поруч із найближчими людьми. Для нас настає саме такий день.</p>
         <p class="lead">Ми з радістю запрошуємо вас розділити з нами мить, коли дві історії стануть однією. Без вас це свято було б неповним.</p>
         <svg class="ornament" style="color:var(--rose)"><use href="#sprig"/></svg>
-        <div class="sign">З любов’ю,<b data-names-plain>Анна і Євгеній</b></div>
+        <div class="sign">З любов’ю,<b data-names-plain>Євгеній і Анна</b></div>
       </article>
     </div>
   </section>
@@ -593,7 +600,7 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
       <h2 class="h-script rv">До скорої зустрічі!</h2>
       <p class="lead rv muted" style="--d:.1s">Ми з нетерпінням чекаємо на вас</p>
       <img class="rv" style="--d:.2s" src="assets/seal.webp" alt="">
-      <p class="sig rv" style="--d:.3s" data-sig>Анна і Євгеній · 19.06.2027</p>
+      <p class="sig rv" style="--d:.3s" data-sig>Євгеній і Анна · 19.06.2027</p>
     </div>
   </section>
 </main>
@@ -675,7 +682,7 @@ if (qs.has('pick') || qs.has('c')) {
 }
 const [Y, M, D] = C.date.slice(0, 10).split('-').map(Number);
 const wd = new Date(Date.UTC(Y, M - 1, D)).getUTCDay();
-const both = `${C.bride} і ${C.groom}`;
+const both = `${C.groom} і ${C.bride}`;
 document.title = both;
 $('[data-bride]').textContent = C.bride;
 $('[data-groom]').textContent = C.groom;
