@@ -9,12 +9,13 @@
 <meta name="theme-color" content="#f7eee8">
 <meta property="og:title" content="Анна і Євгеній · Запрошення на весілля">
 <meta property="og:description" content="Ми будемо щасливі розділити з вами наш особливий день">
-<meta property="og:image" content="assets/seal.png">
+<meta property="og:image" content="assets/couple.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap">
 <link rel="preload" as="image" href="assets/envelope.webp">
 <link rel="preload" as="image" href="assets/seal.webp">
+<link rel="preload" as="image" href="assets/couple.webp">
 <style>
 /* Layout: one narrow "letter" column on a deep wine ground; full‑bleed satin ribbons and ivory paper cards punctuate it. Deliberately single dark theme (an evening invitation). */
 :root{
@@ -156,6 +157,32 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .scroll-cue span{font:500 9.5px/1 var(--sans);letter-spacing:.38em;text-transform:uppercase;color:var(--rose)}
 .scroll-cue i{width:1px;height:42px;background:linear-gradient(var(--rose),transparent);animation:drip 2.4s ease-in-out infinite;transform-origin:top}
 @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* hero with the couple's photo */
+.hero-ph{justify-content:space-between;background:var(--wine-900);color:var(--champagne);
+  --champagne:#fbf4ee;--text-rgb:251,244,238;--strong:#fff;--rose:#f0d2c4;--rose-rgb:240,210,196;--rose-soft:rgba(240,210,196,.5);
+  padding-block:calc(env(safe-area-inset-top,0px) + 40px) 26px}
+.hero-top,.hero-bottom{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.hero-photo{position:absolute;inset:0;background:#1a1110 url(assets/couple.webp) 52% 0/auto 135% no-repeat;transform:scale(1.1);transition:transform 10s cubic-bezier(.2,.6,.2,1)}
+.site.enter .hero-photo{transform:scale(1)}
+.hero-shade{position:absolute;inset:0;background:
+  linear-gradient(180deg, rgba(18,9,9,.5) 0%, rgba(18,9,9,.22) 30%, rgba(18,9,9,0) 46%, rgba(18,9,9,0) 76%, var(--wine-900) 99%)}
+.hero-ph .hero-seal{display:none}
+.hero-ph .silk{display:none}
+.hero-ph .scroll-cue span{color:rgb(var(--accent-rgb))}
+.hero-ph .scroll-cue i{background:linear-gradient(rgb(var(--accent-rgb)),transparent)}
+@media (min-aspect-ratio: 3/4){
+  .hero-photo{background-size:auto 150%;background-position:50% 0}
+  .hero-shade{background:
+    linear-gradient(180deg, rgba(18,9,9,.45) 0%, rgba(18,9,9,0) 40%, rgba(18,9,9,0) 84%, var(--wine-900) 99%),
+    linear-gradient(90deg, #1a1110 17%, rgba(26,17,16,0) 32%, rgba(26,17,16,0) 68%, #1a1110 83%)}
+}
+.hero-ph .names{margin-top:10px}
+.hero-ph .names .nm{text-shadow:0 4px 34px rgba(0,0,0,.55) !important;font-size:clamp(76px,21vw,150px)}
+.hero-ph .hero-date,.hero-ph .hero-day{text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.hero-ph .hero-date{margin-top:12px}
+.hero-ph .scroll-cue{margin-top:28px}
+.hero-ph .eyebrow{text-shadow:0 1px 10px rgba(0,0,0,.6)}
 
 /* satin ribbons */
 .silk{display:block;width:100%;height:170px;pointer-events:none}
@@ -389,8 +416,10 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
 <main class="site" id="site">
 
   <!-- HERO -->
-  <section class="hero band">
-    <div class="hero-glow"></div>
+  <section class="hero hero-ph band">
+    <div class="hero-photo" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-top">
     <img class="hero-seal" src="assets/seal.webp" alt="" data-in style="--d:.2s">
     <p class="eyebrow" data-in style="--d:.35s">Запрошення на весілля</p>
     <h1 class="names" aria-label="Анна і Євгеній">
@@ -400,9 +429,11 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
     </h1>
     <p class="hero-date" data-in style="--d:2.4s" data-hero-date><span>19</span><i></i><span>06</span><i></i><span>2027</span></p>
     <p class="hero-day" data-in style="--d:2.6s" data-hero-day>субота · Київ</p>
+    </div>
+    <div class="hero-bottom">
     <div class="scroll-cue" data-in style="--d:3.2s" aria-hidden="true"><span>гортайте</span><i></i></div>
-    <canvas class="silk" data-silk="hero" aria-hidden="true"></canvas>
-  </section>
+    </div>
+      </section>
 
   <!-- LETTER -->
   <section class="band sec" style="padding-top:40px">
