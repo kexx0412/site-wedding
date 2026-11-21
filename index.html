@@ -309,7 +309,19 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
 .f input[type=text]:focus,.f textarea:focus{outline:none;border-bottom-color:var(--wine-500)}
 .f input::placeholder,.f textarea::placeholder{color:rgba(var(--ink-rgb),.38);font-style:italic}
 .opts{display:grid;gap:10px}
-.opts.two{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.opts.two{grid-template-columns:repeat(auto-fit,minmax(118px,1fr))}
+.opts.yn{grid-template-columns:1fr 1fr}
+.if-yes{display:grid;gap:26px;animation:fold .5s var(--ease)}
+.if-yes[hidden]{display:none}
+@keyframes fold{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.stepper{display:inline-flex;align-items:center;border:1px solid rgba(var(--ink-rgb),.28);border-radius:999px;overflow:hidden}
+.stepper button{width:48px;height:46px;border:0;background:transparent;font:300 24px/1 var(--serif);color:var(--ink);cursor:pointer}
+.stepper button:hover{background:rgba(var(--ink-rgb),.06)}
+.stepper input{width:56px;height:46px;border:0;border-left:1px solid rgba(var(--ink-rgb),.18);border-right:1px solid rgba(var(--ink-rgb),.18);background:transparent;text-align:center;font:400 22px/1 var(--serif);color:var(--ink);-moz-appearance:textfield;appearance:textfield}
+.stepper input::-webkit-inner-spin-button,.stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.stepper input:focus{outline:none;background:rgba(var(--ink-rgb),.04)}
+.f .hint{margin:8px 0 0;font:italic 300 15px/1.3 var(--serif);color:var(--ink-soft)}
+
 .opt{position:relative;display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;font:400 18px/1.25 var(--serif);color:var(--ink);transition:border-color .25s, background .25s}
 .opt input{position:absolute;opacity:0;pointer-events:none}
 .opt .mk{flex:none;width:18px;height:18px;border:1px solid rgba(var(--ink-rgb),.5);border-radius:50%;display:grid;place-items:center;transition:.25s}
@@ -563,26 +575,31 @@ fieldset.f{border:0;margin:0;padding:0;min-width:0}
           </div>
           <fieldset class="f">
             <legend>Чи зможете ви бути з нами?</legend>
-            <div class="opts">
-              <label class="opt"><input type="radio" id="f-a1" name="attend" value="Так, буду"><span class="mk"></span>Так, із радістю буду</label>
-              <label class="opt"><input type="radio" id="f-a2" name="attend" value="Буду з парою"><span class="mk"></span>Буду зі своєю парою</label>
-              <label class="opt"><input type="radio" id="f-a3" name="attend" value="Не зможу"><span class="mk"></span>На жаль, не зможу</label>
+            <div class="opts yn">
+              <label class="opt"><input type="radio" id="f-yes" name="attend" value="Так"><span class="mk"></span>Так, буду</label>
+              <label class="opt"><input type="radio" id="f-no" name="attend" value="Ні"><span class="mk"></span>Ні, не зможу</label>
             </div>
           </fieldset>
-          <fieldset class="f" id="f-drinks-set">
-            <legend>Що ви полюбляєте пити?</legend>
-            <div class="opts two">
-              <label class="opt"><input type="checkbox" id="f-d1" name="drinks" value="Червоне вино"><span class="mk"></span>Червоне вино</label>
-              <label class="opt"><input type="checkbox" id="f-d2" name="drinks" value="Біле вино"><span class="mk"></span>Біле вино</label>
-              <label class="opt"><input type="checkbox" id="f-d3" name="drinks" value="Ігристе"><span class="mk"></span>Ігристе</label>
-              <label class="opt"><input type="checkbox" id="f-d4" name="drinks" value="Віскі або коньяк"><span class="mk"></span>Віскі або коньяк</label>
-              <label class="opt"><input type="checkbox" id="f-d5" name="drinks" value="Горілка"><span class="mk"></span>Горілка</label>
-              <label class="opt"><input type="checkbox" id="f-d6" name="drinks" value="Безалкогольні напої"><span class="mk"></span>Безалкогольні</label>
+          <div class="if-yes" id="ifYes" hidden>
+            <div class="f">
+              <label class="t" for="f-count">Скільки вас буде?</label>
+              <div class="stepper">
+                <button type="button" data-step="-1" aria-label="Менше">−</button>
+                <input type="number" id="f-count" name="count" value="1" min="1" max="10" inputmode="numeric">
+                <button type="button" data-step="1" aria-label="Більше">+</button>
+              </div>
+              <p class="hint">Разом із вами</p>
             </div>
-          </fieldset>
-          <div class="f">
-            <label class="t" for="f-food">Алергії чи особливості харчування</label>
-            <input type="text" id="f-food" name="food" placeholder="Якщо є, напишіть тут">
+            <fieldset class="f">
+              <legend>Що будете пити?</legend>
+              <div class="opts two">
+                <label class="opt"><input type="checkbox" id="f-d1" name="drinks" value="Горілка"><span class="mk"></span>Горілка</label>
+                <label class="opt"><input type="checkbox" id="f-d2" name="drinks" value="Шампанське"><span class="mk"></span>Шампанське</label>
+                <label class="opt"><input type="checkbox" id="f-d3" name="drinks" value="Ігристе"><span class="mk"></span>Ігристе</label>
+                <label class="opt"><input type="checkbox" id="f-d4" name="drinks" value="Коньяк"><span class="mk"></span>Коньяк</label>
+                <label class="opt"><input type="checkbox" id="f-d5" name="drinks" value="Віскі"><span class="mk"></span>Віскі</label>
+              </div>
+            </fieldset>
           </div>
           <div class="f">
             <label class="t" for="f-wish">Побажання молодятам</label>
@@ -918,28 +935,41 @@ function Silk(cv) {
 $$('canvas.silk').forEach(Silk);
 
 /* ───── RSVP ───── */
-const form = $('#form'), err = $('#formErr'), thanks = $('#thanks');
+const form = $('#form'), err = $('#formErr'), thanks = $('#thanks'), ifYes = $('#ifYes'), cnt = $('#f-count');
+const clampCount = () => Math.min(10, Math.max(1, parseInt(cnt.value, 10) || 1));
+$$('input[name="attend"]', form).forEach(r => r.addEventListener('change', () => { ifYes.hidden = !$('#f-yes').checked; }));
+$$('.stepper button', form).forEach(b => b.addEventListener('click', () => { cnt.value = Math.min(10, Math.max(1, clampCount() + Number(b.dataset.step))); }));
+cnt.addEventListener('change', () => { cnt.value = clampCount(); });
 form.addEventListener('submit', async e => {
   e.preventDefault(); err.textContent = '';
   const fd = new FormData(form);
   const name = (fd.get('name') || '').trim(), attend = fd.get('attend');
   if (!name) { err.textContent = 'Напишіть, будь ласка, ваше ім’я.'; $('#f-name').focus(); return; }
-  if (!attend) { err.textContent = 'Оберіть, чи зможете ви прийти.'; $('#f-a1').focus(); return; }
-  const data = { name, attend, drinks: fd.getAll('drinks').join(', '), food: (fd.get('food') || '').trim(), wish: (fd.get('wish') || '').trim() };
-  const summary = `Анкета гостя (${both})\nІм’я: ${data.name}\nПрисутність: ${data.attend}` + (data.drinks ? `\nНапої: ${data.drinks}` : '') + (data.food ? `\nХарчування: ${data.food}` : '') + (data.wish ? `\nПобажання: ${data.wish}` : '');
+  if (!attend) { err.textContent = 'Оберіть, чи зможете ви прийти.'; $('#f-yes').focus(); return; }
+  const coming = attend === 'Так';
+  const data = {
+    name, attend,
+    count: coming ? String(clampCount()) : '0',
+    drinks: coming ? fd.getAll('drinks').join(', ') : '',
+    wish: (fd.get('wish') || '').trim()
+  };
+  const summary = `Анкета гостя (${both})\nІм’я: ${data.name}\nБуде: ${data.attend}` + (coming ? `\nСкільки осіб: ${data.count}` : '') + (data.drinks ? `\nНапої: ${data.drinks}` : '') + (data.wish ? `\nПобажання: ${data.wish}` : '');
   const btn = $('#submitBtn'); btn.disabled = true; btn.textContent = 'Надсилаємо…';
   let sent = false;
   if (C.rsvpEndpoint) {
     try { await fetch(C.rsvpEndpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) }); sent = true; } catch (_) { sent = false; }
+    if (!sent) {
+      btn.disabled = false; btn.textContent = 'Надіслати відповідь';
+      err.textContent = 'Не вдалося надіслати. Перевірте інтернет і спробуйте ще раз.'; return;
+    }
   }
-  const coming = attend !== 'Не зможу';
   const title = coming ? 'Дякуємо!' : 'Дякуємо, що повідомили';
   const line = coming ? 'Ми дуже чекаємо на зустріч з вами.' : 'Нам вас бракуватиме. Обіймаємо!';
   if (sent) {
     thanks.innerHTML = `<h3 class="h-script">${title}</h3><p>Вашу відповідь отримано. ${line}</p>`;
   } else {
     const tg = 'https://t.me/share/url?url=' + encodeURIComponent(location.href.split('#')[0]) + '&text=' + encodeURIComponent(summary);
-    thanks.innerHTML = `<h3 class="h-script">${title}</h3><p>${line} Залишився один крок: надішліть цю відповідь організатору.</p>
+    thanks.innerHTML = `<h3 class="h-script">${title}</h3><p>${line} Залишився один крок: надішліть цю відповідь нам.</p>
       <div class="row"><a class="btn" href="${tg}" target="_blank" rel="noopener">Надіслати в Telegram</a><button class="btn" type="button" id="copyBtn">Скопіювати текст</button></div><pre id="sumTxt">${esc(summary)}</pre>`;
     $('#copyBtn').addEventListener('click', async ev => {
       try { await navigator.clipboard.writeText(summary); ev.currentTarget.textContent = 'Скопійовано'; }
@@ -947,6 +977,7 @@ form.addEventListener('submit', async e => {
     });
   }
   form.hidden = true; thanks.hidden = false;
+  thanks.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
 });
 
 /* ───── music ───── */
